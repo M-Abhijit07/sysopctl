@@ -1,0 +1,53 @@
+.TH sysopctl 1 "October 2024" "v0.1.0" "System Management Command"
+
+.SH NAME
+sysopctl \- A system resource management tool
+
+.SH SYNOPSIS
+.B sysopctl
+[option] [arguments]
+
+.SH DESCRIPTION
+.B sysopctl
+manages system services, processes, and system resources.
+
+.SH OPTIONS
+.TP
+.BR service list
+List all active services.
+
+.TP
+.BR service start <name>
+Start a specific service.
+
+.TP
+.BR service stop <name>
+Stop a specific service.
+
+.TP
+.BR system load
+View the current system load.
+
+.TP
+.BR disk usage
+Check disk usage statistics.
+
+.TP
+.BR process monitor
+Monitor system processes in real time.
+
+.TP
+.BR logs analyze
+Analyze system logs.
+
+.TP
+.BR backup <path>
+Backup system files from a given path.
+
+.TP
+.BR --help
+Display the help message.
+
+.TP
+.BR --version
+Display the version of sysopctl.
