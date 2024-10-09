@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# sysopctl version
+VERSION="v0.1.0"
+
+# Display help function
+display_help() {
+    echo "Usage: sysopctl [option] [arguments]"
+    echo
+    echo "Options:"
+    echo "  service list               List all active services"
+    echo "  service start <name>       Start a specific service"
+    echo "  service stop <name>        Stop a specific service"
+    echo "  system load                View current system load"
+    echo "  disk usage                 Check disk usage statistics"
+    echo "  process monitor            Monitor system processes"
+    echo "  logs analyze               Analyze system logs"
+    echo "  backup <path>              Backup files from a specific path"
+    echo "  --help                     Display this help message"
+    echo "  --version                  Display the version of sysopctl"
+}
+
+# Handle --version and --help
+if [[ $1 == "--version" ]]; then
+    echo "sysopctl version $VERSION"
+    exit 0
+elif [[ $1 == "--help" ]]; then
+    display_help
+    exit 0
+fi
