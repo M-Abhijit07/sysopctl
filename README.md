@@ -17,11 +17,6 @@
 
 ## Installation
 
-### Prerequisites
-- A Linux-based system.
-- Basic knowledge of Linux system management and Bash scripting.
-- `systemctl`, `uptime`, `df`, `rsync`, and `journalctl` should be available on the system (these are pre-installed on most Linux distributions).
-
 ### Steps to Install
 
 1. Clone the repository:
