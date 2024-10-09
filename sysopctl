@@ -28,3 +28,83 @@ elif [[ $1 == "--help" ]]; then
     display_help
     exit 0
 fi
+
+# List active services
+if [[ $1 == "service" && $2 == "list" ]]; then
+    systemctl list-units --type=service
+    exit 0
+fi
+
+# Start a service
+if [[ $1 == "service" && $2 == "start" ]]; then
+    if [[ -z $3 ]]; then
+        echo "Error: Service name required."
+        exit 1
+    fi
+    systemctl start "$3"
+    if [[ $? -eq 0 ]]; then
+        echo "Service $3 started successfully."
+    else
+        echo "Failed to start service $3."
+    fi
+    exit 0
+fi
+
+# Stop a service
+if [[ $1 == "service" && $2 == "stop" ]]; then
+    if [[ -z $3 ]]; then
+        echo "Error: Service name required."
+        exit 1
+    fi
+    systemctl stop "$3"
+    if [[ $? -eq 0 ]]; then
+        echo "Service $3 stopped successfully."
+    else
+        echo "Failed to stop service $3."
+    fi
+    exit 0
+fi
+
+# View system load
+if [[ $1 == "system" && $2 == "load" ]]; then
+    uptime
+    exit 0
+fi
+
+# Check disk usage
+if [[ $1 == "disk" && $2 == "usage" ]]; then
+    df -h
+    exit 0
+fi
+
+# Monitor system processes
+if [[ $1 == "process" && $2 == "monitor" ]]; then
+    top
+    exit 0
+fi
+
+# Analyze system logs
+if [[ $1 == "logs" && $2 == "analyze" ]]; then
+    journalctl -p 3 -xe
+    exit 0
+fi
+
+# Backup files from a specified path
+if [[ $1 == "backup" ]]; then
+    if [[ -z $2 ]]; then
+        echo "Error: Path required for backup."
+        exit 1
+    fi
+    rsync -avh "$2" /path/to/backup/location
+    if [[ $? -eq 0 ]]; then
+        echo "Backup of $2 initiated successfully."
+    else
+        echo "Backup failed."
+    fi
+    exit 0
+fi
+
+# If no valid command is provided
+echo "Error: Invalid command."
+echo "Use 'sysopctl --help' for usage information."
+exit 1
